@@ -24,7 +24,7 @@ class PagesController extends Controller
     }
     public function Histories()
     {
-       return view('/histories');
+       return view('/histories.histories');
     }
     
 }

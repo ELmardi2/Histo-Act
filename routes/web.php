@@ -26,3 +26,6 @@ Route::get('/contact', 'PagesController@Contact');
 
 //Route to Articles
 Route::resource('articles', 'ArticleController');
+
+//Route to Histories
+Route::resource('histories', 'HistoryController');
