@@ -3,7 +3,7 @@
 @section('title', 'articles-page') <!--page title-->
 
 <div class="bg-info text-white p-4 mb-3">
-    <a href="{{url('/')}}" class=" btn btn-secondary">Home</a>
+    <a href="{{url('/')}}" class=" btn btn-secondary">Histo-Act</a>
     <a href="{{url('/articles')}}" class=" btn btn-secondary">Articles</a>
     <a href="{{url('articles/create')}}" class=" btn btn-secondary">create an article</a>
 </div>

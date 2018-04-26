@@ -17,10 +17,7 @@
 Route::get('/', 'PagesController@Home');
 //Route about-us page
 Route::get('/about', 'PagesController@About');
-//Route articles page
-Route::get('/articles', 'PagesController@Articles');
-//Route histories page
-Route::get('/histories', 'PagesController@Histories');
+
 //Route contact-us page
 Route::get('/contact', 'PagesController@Contact');
 

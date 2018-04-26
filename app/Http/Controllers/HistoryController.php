@@ -14,7 +14,8 @@ class HistoryController extends Controller
      */
     public function index()
     {
-        return view('histories.histories');
+        $histories = History::orderBy('id', 'desc')->paginate(10);
+        return view('histories.histories', ['histories' =>$histories]);
     }
 
     /**
@@ -35,7 +36,16 @@ class HistoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required | min: 4',
+            'details' => 'required | min: 10'
+        ]);
+       History::create([
+           'title' =>$request->title,
+           'details' =>$request->details,
+       ]);
+       session()->flash('message', 'your Histories has been successfully added');
+       return redirect(route('histories.index'));
     }
 
     /**
@@ -46,7 +56,8 @@ class HistoryController extends Controller
      */
     public function show(History $history)
     {
-        //
+        return view('histories.show', ['history' => $history]);
+        
     }
 
     /**
@@ -57,7 +68,7 @@ class HistoryController extends Controller
      */
     public function edit(History $history)
     {
-        //
+        //return view('histories.edit', compact('history'));
     }
 
     /**
@@ -69,7 +80,13 @@ class HistoryController extends Controller
      */
     public function update(Request $request, History $history)
     {
-        //
+        /*
+        $history->title = $request->title;
+        $history->details = $request->details;
+        $history->save();
+        session()->flash('message', 'your History has been successfully updated');
+        return redirect()->back();
+        */
     }
 
     /**
@@ -80,6 +97,10 @@ class HistoryController extends Controller
      */
     public function destroy(History $history)
     {
-        //
+        /*
+        $history->delete();
+        session()->flash('message', 'your history has been deleted');
+        return redirect(route('histories.index'));
+        */
     }
 }

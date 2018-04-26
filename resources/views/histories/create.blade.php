@@ -1,8 +1,8 @@
 @extends('defaults.default')
 
-@section('title', 'create-histories') <!--page title-->
+@section('title', 'create-history')
 
-@section('content')<!--start content section-->
+@section('content')
 <h1 class="my-5 text-center">Add A History</h1>
 @if ($errors->all())
 <div class="alert-danger">
@@ -13,7 +13,7 @@
      @endforeach
 </div>
 @endif
-<form action="#" method="POST">
+<form action="{{route('histories.store')}}" method="POST">
     @csrf
 <div class="form-group">
     <label for="title">Title</label>
@@ -24,7 +24,7 @@
     <textarea name="details" id="details" class="form-control" cols="30" rows="10"></textarea>
 </div>
 <div class="form-group">
-<button type="submit" class="btn btn-outline-primary"> Add A History</button>
+<button type="submit" class="btn btn-outline-primary"> Add an History</button>
 </div>
 </form>
-@stop   <!--End content section-->
+@stop

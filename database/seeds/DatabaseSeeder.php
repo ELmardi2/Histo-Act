@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 
 use App\Article;
-
+use App\History;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
         factory(Article::class, 25)->create();
+        factory(History::class, 25)->create();
     }
 }

@@ -1,9 +1,9 @@
 @extends('defaults.default')
 
-@section('title', 'create-articles') <!--page title-->
+@section('title', 'create-articles')
 
-@section('content')<!--start content section-->
-<h1 class="my-5 text-center">Add an Article</h1>
+@section('content')
+<h1 class="my-5 text-center">Add An Article</h1>
 @if ($errors->all())
 <div class="alert-danger">
         @foreach ($errors->all() as $error)
@@ -27,4 +27,4 @@
 <button type="submit" class="btn btn-outline-primary"> Add an Article</button>
 </div>
 </form>
-@stop   <!--End content section-->
+@stop

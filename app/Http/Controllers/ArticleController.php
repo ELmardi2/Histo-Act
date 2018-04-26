@@ -44,7 +44,8 @@ class ArticleController extends Controller
             'title' => $request->title,
             'details' => $request->details,
         ]);
-      return 'your article has been created successfully';
+      //return 'your article has been created successfully';
+      return redirect(url('articles'));
     }
 
     /**

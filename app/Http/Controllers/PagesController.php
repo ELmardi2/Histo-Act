@@ -8,7 +8,7 @@ class PagesController extends Controller
 {
     public function Home()
     {
-       return view('home');
+       return view('main');
     }
     public function About()
     {
@@ -17,14 +17,6 @@ class PagesController extends Controller
     public function Contact()
     {
        return view('/contact');
-    }
-    public function Articles()
-    {
-       return view('/articles');
-    }
-    public function Histories()
-    {
-       return view('/histories.histories');
     }
     
 }
