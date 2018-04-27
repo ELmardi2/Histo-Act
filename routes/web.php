@@ -26,6 +26,9 @@ Route::resource('articles', 'ArticleController');
 
 //Route to Histories
 Route::resource('histories', 'HistoryController');
+
+//Auth route
 Auth::routes();
 
+//Home route
 Route::get('/home', 'HomeController@index')->name('home');

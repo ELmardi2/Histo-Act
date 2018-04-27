@@ -8,12 +8,10 @@
     <a href="{{url('/histories')}}" class=" btn btn-secondary">Histories</a>
     <a href="{{url('/contact')}}" class=" btn btn-secondary">Contact-us</a>
     <div class="d-inline-block float-right">
-            <a href="#" class=" btn btn-secondary  ">Signins</a>
+            <a href="#" class=" btn btn-secondary  ">Signin</a>
             <a href="#" class=" btn btn-secondary  mr-4">Signup</a>
         </div>
 </div>
-
-
 @section('content') <!--start content section-->
 <h2 class="text-center"> Welcome to home page!!!</h2>
 @stop <!--End content section-->
