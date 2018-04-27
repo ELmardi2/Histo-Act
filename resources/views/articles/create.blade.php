@@ -13,8 +13,9 @@
      @endforeach
 </div>
 @endif
-<form action="{{route('articles.store')}}" method="POST">
+<form action="{{route('articles.store')}}">
     @csrf
+    @method('POST')
 <div class="form-group">
     <label for="title">Title</label>
     <input type="text" name="title" id="title" class="form-control" placeholder="type your title here">
