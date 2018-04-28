@@ -20,8 +20,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::orderBy('id', 'desc')->paginate(6);
-        return view('articles.articles', ['articles' => $articles]);
+        $articles = Article::orderBy('id', 'desc')->paginate(10);
+        return view('articles.index', ['articles' => $articles]);
     }
 
     /**
@@ -42,16 +42,16 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'title' =>'required| min:3 ' ,
-            'details' =>'required | min:9 ' ,
+        $this->validate($request, [
+            'title' => 'required | min: 4',
+            'details' => 'required | min: 10'
         ]);
-        Article::create([
-            'title' => $request->title,
-            'details' => $request->details,
-        ]);
-      //return 'your article has been created successfully';
-      return redirect(url('articles'));
+       Article::create([
+           'title' =>$request->title,
+           'details' =>$request->details,
+       ]);
+       session()->flash('message', 'your Article has been successfully added');
+       return redirect(route('articles.index'));//
     }
 
     /**
@@ -73,7 +73,7 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        //
+        return view('articles.edit', compact('article'));
     }
 
     /**
@@ -85,7 +85,11 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
-        //
+        $article->title = $request->title;
+        $article->details = $request->details;
+        $article->save();
+        session()->flash('message', 'your article has been successfully updated');
+         return redirect(route('articles.index'));
     }
 
     /**
@@ -96,6 +100,10 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
-        //
+        $article->delete();
+        session()->flash('message', 'your article has been deleted');
+        return redirect(route('articles.index'));
+        
     }
 }
+

@@ -20,7 +20,7 @@ class HistoryController extends Controller
      */
     public function index()
     {
-        $histories = History::orderBy('id', 'desc')->paginate(10);
+        $histories = History::orderBy('id', 'desc')->paginate(7);
         return view('histories.histories', ['histories' =>$histories]);
     }
 
@@ -74,7 +74,7 @@ class HistoryController extends Controller
      */
     public function edit(History $history)
     {
-        //return view('histories.edit', compact('history'));
+        return view('histories.edit', compact('history'));
     }
 
     /**
@@ -85,14 +85,12 @@ class HistoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, History $history)
-    {
-        /*
+    {  
         $history->title = $request->title;
         $history->details = $request->details;
         $history->save();
         session()->flash('message', 'your History has been successfully updated');
-        return redirect()->back();
-        */
+        return redirect(route('histories.index'));
     }
 
     /**
@@ -103,10 +101,9 @@ class HistoryController extends Controller
      */
     public function destroy(History $history)
     {
-        /*
         $history->delete();
         session()->flash('message', 'your history has been deleted');
         return redirect(route('histories.index'));
-        */
+
     }
 }
