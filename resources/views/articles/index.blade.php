@@ -27,8 +27,10 @@
 
                 @method('DELETE') 
                 <button type="submit" class="btn btn-danger">Delete</button>
-            </form>       
+            </form>     
         </h3>
+        <hr>
+        <small>Written on {{$article->created_at}}</small>
     </div>
 </div>
 @endforeach <!--End foreach -->

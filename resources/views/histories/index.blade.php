@@ -26,6 +26,7 @@
                   <button type="submit" class="btn btn-danger">Delete</button>
               </form> 
           </h3>
+          <small>Written on {{$history->created_at}}</small>
       </div>
       </div>  
 @endforeach <!--endforeach -->

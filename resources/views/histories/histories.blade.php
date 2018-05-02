@@ -19,17 +19,15 @@
                 <!--title of the history -->
                   {{$history->title}}
               </a>
-              @auth
               <a  href="{{route('histories.edit', $history->id)}}" class="btn btn-secondary">Edit !</a>
               <form action="{{route('histories.destroy', $history->id)}}" method="POST" onsubmit="return confirm('Are You Sure that you want delete this article !?')" class="d-inline-block" action="{{route('histories.destroy', $history->id)}}"> 
                   @csrf <!--protect my form csrf -->
                   @method('DELETE') 
                   <button type="submit" class="btn btn-danger">Delete</button>
               </form> 
-              @else
-            <a href="{{route('login')}}">Login</a>
-            @endauth
           </h3>
+          <hr>
+          <small>Written on {{$history->created_at}}</small>
       </div>
       </div>  
 @endforeach <!--endforeach -->

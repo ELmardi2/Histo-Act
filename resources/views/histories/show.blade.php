@@ -8,6 +8,8 @@
 @section('title', 'show-history') <!--section page title -->
 
 @section('content') <!--start content section -->
+<a href="{{url('/histories')}}" class=" btn btn-primary"> Back</a>
+<hr>
 <div class="card">
     <div class="card-header">
         <h1>{{$history->title}}</h1>

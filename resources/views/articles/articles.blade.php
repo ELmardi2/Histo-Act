@@ -19,6 +19,7 @@
         <h3>
              <a href="{{route('articles.show', $article->id)}}">
                  {{$article->title}}
+             <small>Written on {{$article->created_at}}</small>
              </a>
              <a  href="{{route('articles.edit', $article->id)}}" class="btn btn-secondary">Edit !</a>
             <form action="{{route('articles.destroy', $article->id)}}" method="POST" onsubmit="return confirm('Are You Sure that you want delete this article !?')" class="d-inline-block" action="{{route('articles.destroy', $article->id)}}" method="POST"> 
