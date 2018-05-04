@@ -33,7 +33,6 @@ class ArticleController extends Controller
     {
         return view('articles.create');
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -51,7 +50,7 @@ class ArticleController extends Controller
            'details' =>$request->details,
        ]);
        session()->flash('message', 'your Article has been successfully added');
-       return redirect(route('articles.index'));//
+       return redirect(route('articles.index'));
     }
 
     /**

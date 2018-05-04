@@ -20,6 +20,7 @@ class HistoryController extends Controller
      */
     public function index()
     {
+         //$comments = Comment::all();
         $histories = History::orderBy('id', 'desc')->paginate(7);
         return view('histories.histories', ['histories' =>$histories]);
     }

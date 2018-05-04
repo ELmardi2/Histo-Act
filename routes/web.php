@@ -32,3 +32,12 @@ Auth::routes();
 
 //Home route
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Route comments page
+Route::resource('/comments', 'CommentController');
+
+//Route comments Articles
+Route::post('/comments/{article}/addComment', 'CommentController@addComment');
+
+
+

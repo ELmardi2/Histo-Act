@@ -13,7 +13,12 @@
      @endforeach
 </div>
 @endif
-<form action="{{route('articles.store')}}">
+@if (session()->has('message'))
+    <div class="alert alert-success">
+        {{session()->get('message')}}
+    </div>
+@endif
+<form action="{{route('articles.store')}}" method="POST">
     @csrf
     @method('POST')
 <div class="form-group">

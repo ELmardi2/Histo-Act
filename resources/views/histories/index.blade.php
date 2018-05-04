@@ -11,6 +11,8 @@
 </div>
 @section('content') <!--start content section-->
 <h2 class="text-center mt-5"> Welcome to all histories page!!!</h2>
+@if (count($histories) > 0)
+
 @foreach ($histories as $history ) <!--start foreach -->
   <div class="card mt-4">
       <div class="card-body">
@@ -33,5 +35,9 @@
 
 <!--the rest of the histories -->
 {{$histories->links()}}
+
+@else
+<div class="alert alert-info text-center"> <strong>OH Sorry There is No History To Show For The Moment !!!!!!!</strong> </div>
+@endif <!-- End If -->
 
 @endsection <!--end content section -->

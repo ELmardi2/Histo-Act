@@ -22,10 +22,8 @@
              <small>Written on {{$article->created_at}}</small>
              </a>
              <a  href="{{route('articles.edit', $article->id)}}" class="btn btn-secondary">Edit !</a>
-            <form action="{{route('articles.destroy', $article->id)}}" method="POST" onsubmit="return confirm('Are You Sure that you want delete this article !?')" class="d-inline-block" action="{{route('articles.destroy', $article->id)}}" method="POST"> 
-
+            <form action="{{route('articles.destroy', $article->id)}}"  onsubmit="return confirm('Are You Sure that you want delete this article !?')" class="d-inline-block" action="{{route('articles.destroy', $article->id)}}" method="POST"> 
                 @csrf <!--protect my form csrf -->
-
                 @method('DELETE') 
                 <button type="submit" class="btn btn-danger">Delete</button>
             </form>       

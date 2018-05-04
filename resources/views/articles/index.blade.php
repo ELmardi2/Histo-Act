@@ -21,23 +21,21 @@
                  {{$article->title}}
              </a>
              <a  href="{{route('articles.edit', $article->id)}}" class="btn btn-secondary">Edit !</a>
-            <form action="{{route('articles.destroy', $article->id)}}" onsubmit="return confirm('Are You Sure that you want delete this article !?')" class="d-inline-block" action="{{route('articles.destroy', $article->id)}}" method="POST"> 
-
+            <form action="{{route('articles.destroy', $article->id)}}" method="POST"  onsubmit="return confirm('Are You Sure that you want delete this article !?')" class="d-inline-block" action="{{route('articles.destroy', $article->id)}}"> 
                 @csrf <!--protect my form csrf -->
-
                 @method('DELETE') 
                 <button type="submit" class="btn btn-danger">Delete</button>
             </form>     
         </h3>
         <hr>
-        <small>Written on {{$article->created_at}}</small>
+        <small>{{$article->created_at->diffForHumans()}}</small>
     </div>
 </div>
 @endforeach <!--End foreach -->
 {{ $articles->links() }} <!-- the rest pages --> 
 
 @else
-<p>Oh sorry there is no articles to show right now!!!</p>
+<div class="alert alert-info text-center"> <strong>OH Sorry There is No Articles To Show For The Moment !!!!!!!</strong> </div>
 @endif <!-- End If -->
 
 @stop <!--End content section-->

@@ -9,4 +9,9 @@ use App\History;
 class History extends Model
 {
     protected $guarded=[];
+
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
+    }
 }
