@@ -39,17 +39,18 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $Article)
+    public function store(Request $request)
     {
+        
         $comments = Article::findOrFail($request->article_id);
 
         Comment::create([
             'content' => $request->content,
             'user_id' => Auth::id(),
-            'article_id' => $article_id,
-
+            'article_id' => $request->article_id,
         ]);
         $article->comments()->save(comments);
+        
     }
 
     /**

@@ -28,8 +28,14 @@
             </form>     
         </h3>
         <hr>
-        <small>{{$article->created_at->diffForHumans()}}</small>
+        <span class="btn btn-info">
+            <i class="fa fa-oclock-o"></i>{{$article->created_at->diffForHumans()}}
+        </span> 
+        <span class="btn btn-success">
+            <i class="fa fa-user"></i>{{$article->user->name}}
+        </span> 
     </div>
+    
 </div>
 @endforeach <!--End foreach -->
 {{ $articles->links() }} <!-- the rest pages --> 

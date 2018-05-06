@@ -23,9 +23,12 @@ Route::get('/contact', 'PagesController@Contact');
 
 //Route to Articles
 Route::resource('articles', 'ArticleController');
+//Route::post('articles/{user_id}/, 'ArticleController@store');
 
 //Route to Histories
 Route::resource('histories', 'HistoryController');
+//Route to Histories
+//Route::resource('posts', 'PostController');
 
 //Auth route
 Auth::routes();
@@ -37,7 +40,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/comments', 'CommentController');
 
 //Route comments Articles
-Route::post('/comments/{article}/addComment', 'CommentController@addComment');
+Route::post('/articles{id}/comments', 'CommentController@addComment');
 
 
 

@@ -28,7 +28,12 @@
             </form> 
         </h3>
         <hr>
-        <small>Written on {{$history->created_at}}</small>
+        <span class="btn btn-info">
+            <i class="fa fa-oclock-o"></i>{{$history->created_at->diffForHumans()}}
+        </span> 
+        <span class="btn btn-success">
+            <i class="fa fa-user"></i>{{$history->user->name}}
+        </span> 
     </div>
     </div>  
 @endforeach <!--endforeach -->

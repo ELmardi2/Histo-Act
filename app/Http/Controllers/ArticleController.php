@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Article;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Article;
 
 class ArticleController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth')->except([
-            'index', 'show'
+            'index', 'show', 'articles'
         ]);
     }
     /**
@@ -20,6 +22,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
+        //$articles = Article::all();
         $articles = Article::orderBy('id', 'desc')->paginate(10);
         return view('articles.index', ['articles' => $articles]);
     }
@@ -45,9 +48,12 @@ class ArticleController extends Controller
             'title' => 'required | min: 4',
             'details' => 'required | min: 10'
         ]);
+        // Get the currently authenticated user...
+        $user = Auth::user();
        Article::create([
            'title' =>$request->title,
            'details' =>$request->details,
+           'user_id' => auth()->id()
        ]);
        session()->flash('message', 'your Article has been successfully added');
        return redirect(route('articles.index'));
@@ -72,6 +78,7 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
+        //$articles = find($id)
         return view('articles.edit', compact('article'));
     }
 

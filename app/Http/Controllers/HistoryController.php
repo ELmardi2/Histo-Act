@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\History;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HistoryController extends Controller
 {
@@ -44,12 +45,16 @@ class HistoryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required | min: 4',
-            'details' => 'required | min: 10'
+            'title' => 'bail | required | min: 4',
+            'details' => 'bail | required | min: 10'
         ]);
+         // Get the currently authenticated user...
+         $user = Auth::user();
+
        History::create([
            'title' =>$request->title,
            'details' =>$request->details,
+           'user_id' => auth()->id()
        ]);
        session()->flash('message', 'your Histories has been successfully added');
        return redirect(route('histories.index'));
