@@ -80,6 +80,10 @@ class HistoryController extends Controller
      */
     public function edit(History $history)
     {
+        $userId = Auth::id();
+        if ($history->user_id !== $userId) {
+            return redirect('/histories')->with('<div class="alert alert-danger">Sorry that it is not your article !! you can not edit it</div>');
+        }
         return view('histories.edit', compact('history'));
     }
 
@@ -94,6 +98,11 @@ class HistoryController extends Controller
     {  
         $history->title = $request->title;
         $history->details = $request->details;
+        $userId = Auth::id();
+        if ($history->user_id !== $userId) {
+            session()->flash('error', 'Sorry that it is not your article !! you can not edit it');
+            return redirect('/histories');
+        }
         $history->save();
         session()->flash('message', 'your History has been successfully updated');
         return redirect(route('histories.index'));
@@ -108,6 +117,11 @@ class HistoryController extends Controller
     public function destroy(History $history)
     {
         $history->delete();
+        $userId = Auth::id();
+        if ($history->user_id !== $userId) {
+            session()->flash('error', 'Sorry that it is not your article !! you can not edit it');
+            return redirect('/histories');
+        }
         session()->flash('message', 'your history has been deleted');
         return redirect(route('histories.index'));
 

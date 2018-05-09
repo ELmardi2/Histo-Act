@@ -1,17 +1,11 @@
 @extends('defaults.default')
 
 @section('title', 'articles-page') <!--page title-->
-
-<div class="bg-info text-white p-4 mb-3">
-    <a href="{{url('/')}}" class=" btn btn-secondary">Histo-Act</a>
-    <a href="{{url('/articles')}}" class=" btn btn-secondary">Articles</a>
-    <a href="{{url('articles/create')}}" class=" btn btn-secondary">create an article</a>
-</div>
 @section('content') <!--start content section-->
 <h2 class="text-center mt-5"> Welcome to articles page!!!</h2>
 <div class="card">
     <div class="card-header">
-            {{$article->title}}
+            <h1>{{$article->title}}</h1>
     </div>
     <div class="card-body">
         <p>
@@ -20,11 +14,15 @@
     </div>
 </div>
 <hr>
-
-<hr>
+<a  href="{{route('articles.edit', $article->id)}}" class="btn btn-secondary"><i class="fa fa-edit"></i> Edit !</a>
+    <form action="{{route('articles.destroy', $article->id)}}"  onsubmit="return confirm('Are You Sure that you want delete this article !?')" class="d-inline-block" action="{{route('articles.destroy', $article->id)}}" method="POST"> 
+        @csrf <!--protect my form csrf -->
+        @method('DELETE') 
+        <button type="submit" class="btn btn-danger"> <i class="fa fa-close"></i> Delete</button>
+     </form>
 <div class="panel-body">
     <h4>Leave your comment</h4>
-    <form action="comments/{article}/addComment" >
+    <form action="#" >
         @csrf
         @method('POST')
         <div class="form-group">

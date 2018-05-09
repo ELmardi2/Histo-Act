@@ -78,7 +78,11 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        //$articles = find($id)
+
+        $userId = Auth::id();
+        if ($article->user_id !== $userId) {
+            return redirect('/articles')->with('<div class="alert alert-danger">Sorry that it is not your article !! you can not edit it!!');
+        }
         return view('articles.edit', compact('article'));
     }
 
@@ -93,6 +97,10 @@ class ArticleController extends Controller
     {
         $article->title = $request->title;
         $article->details = $request->details;
+        $userId = Auth::id();
+        if ($article->user_id !== $userId) {
+            return redirect('/articles')->with('message', 'Sorry that it is not your article !! you can not edit it');
+        }
         $article->save();
         session()->flash('message', 'your article has been successfully updated');
          return redirect(route('articles.index'));

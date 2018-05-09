@@ -3,34 +3,38 @@
 @section('title', 'histories') <!--title of the page -->
  
 <!-- what is  goining to show in this page as content-->
-
-<div class="bg-info text-white p-4 mb-3">
-    <a href="{{url('/')}}" class=" btn btn-secondary">Histo-Act</a>
-<a href="{{url('/histories')}}" class=" btn btn-secondary">Histories</a>
-<a href="{{url('histories/create')}}" class=" btn btn-secondary">create a history</a>
-</div>
 @section('content') <!--start content section-->
 <h2 class="text-center mt-5"> Welcome to all histories page!!!</h2>
+@if (session()->has('message'))
+    <div class="alert alert-success">
+        {{session()->get('message')}}
+    </div>
+@endif
+@if (session()->has('error'))
+    <div class="alert alert-danger">
+        {{session()->get('error')}}
+    </div>
+@endif
 @if (count($histories) > 0)  <!--start history count -->
 @foreach ($histories as $history ) <!--start foreach -->
 <div class="card mt-4">
-    <div class="card-body">
-        <h3>
-            <a href="{{route('histories.show', $history->id)}}">
-              <!--title of the history -->
-                {{$history->title}}
-            </a>
-            <a  href="{{route('histories.edit', $history->id)}}" class="btn btn-secondary">Edit !</a>
-            <form action="{{route('histories.destroy', $history->id)}}" method="POST" onsubmit="return confirm('Are You Sure that you want delete this article !?')" class="d-inline-block" action="{{route('histories.destroy', $history->id)}}"> 
-                @csrf <!--protect my form csrf -->
-                @method('DELETE') 
-                <button type="submit" class="btn btn-danger">Delete</button>
-            </form> 
+    <div class="card-header">
+        <h3><!--title of the history -->
+            {{$history->title}}
         </h3>
+    </div>
+    <div class="card-body">
+       <p>
+        {{str_limit(strip_tags($history->details), 50)}}
+        @if (strlen(strip_tags($history->details)) > 50)
+        <a href="{{route('histories.show', $history->id)}}" class="btn btn-info-sm">Read More</a>
+        @endif
+       </p>
         <hr>
         <span class="btn btn-info">
-            <i class="fa fa-oclock-o"></i>{{$history->created_at->diffForHumans()}}
+            <i class="fa fa-calendar"></i>{{$history->created_at->diffForHumans()}}
         </span> 
+        &nbsp;
         <span class="btn btn-success">
             <i class="fa fa-user"></i>{{$history->user->name}}
         </span> 

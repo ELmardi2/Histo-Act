@@ -3,9 +3,13 @@
 
 
 <div class="bg-info text-white p-4 mb-3">
-    <a href="{{url('/')}}" class=" btn btn-secondary">Histo-Act</a>
-<a href="{{url('/articles')}}" class=" btn btn-secondary">Articles</a>
-<a href="{{url('articles/create')}}" class=" btn btn-secondary">create an article</a>
+    <a href="{{url('/')}}" class=" btn btn-success"><span class="label label-default">Histo-Act</span></a>
+    <a href="{{url('/')}}" class=" btn btn-secondary">Home</a>
+    <a href="{{url('/about')}}" class=" btn btn-secondary">About</a>
+    <a href="{{url('/articles')}}" class=" btn btn-secondary">Articles</a>
+    <a href="{{url('/histories')}}" class=" btn btn-secondary">Histories</a>
+    <a href="{{url('/contact')}}" class=" btn btn-secondary">Contact-us</a>
+
 @auth
 <form action="{{ route('logout') }}"  method="POST" class="d-inline-block float-right">
     @csrf
@@ -20,7 +24,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">Profil</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -28,8 +32,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    You are logged in!
+                    <h3> Welcome  To Histo-Act</h3>
                 </div>
             </div>
         </div>

@@ -12,26 +12,24 @@
 </div>
 @section('content') <!--start content section-->
 <h1 class="text-center mt-5"> Welcome to articles  page!!!</h1>
+@if (session()->has('message'))
+    <div class="alert alert-success">
+        {{session()->get('message')}}
+    </div>
+@endif
+@if (session()->has('error'))
+    <div class="alert alert-danger">
+        {{session()->get('error')}}
+    </div>
+@endif
 @if (count($articles) > 0)
 @foreach ($articles as $article) <!--start foreach -->
 <div class="card mt-4">
     <div class="card-header">
         <h3>
              <a href="{{route('articles.show', $article->id)}}">
-                 {{$article->title}}
-                 <span class="btn btn-info">
-                    <i class="fa fa-oclock-o"></i>{{$article->created_at->diffForHumans()}}
-                </span> 
-                <span class="btn btn-success">
-                    <i class="fa fa-user"></i>{{$article->user->name}}
-                </span>         
-             </a>
-             <a  href="{{route('articles.edit', $article->id)}}" class="btn btn-secondary">Edit !</a>
-            <form action="{{route('articles.destroy', $article->id)}}"  onsubmit="return confirm('Are You Sure that you want delete this article !?')" class="d-inline-block" action="{{route('articles.destroy', $article->id)}}" method="POST"> 
-                @csrf <!--protect my form csrf -->
-                @method('DELETE') 
-                <button type="submit" class="btn btn-danger">Delete</button>
-            </form>       
+                 {{$article->title}}        
+             </a>      
         </h3>
     </div>
 </div>
