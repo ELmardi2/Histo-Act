@@ -25,7 +25,7 @@
             <p>
                 {{str_limit(strip_tags($article->details), 50)}}
                 @if (strlen(strip_tags($article->details)) > 50)
-                <a href="{{route('articles.show', $article->id)}} class="btn btn-info-sm">Read More</a>
+                <a href="{{route('articles.show', $article->id)}}" class="btn btn-info-sm">Read More</a>
                 @endif
             </p>
         <hr>
