@@ -32,7 +32,7 @@
         <span class="btn btn-info">
             <i class="fa fa-calendar"></i> {{$article->created_at->diffForHumans()}}
         </span> 
-        &nbsp;
+        &nbsp;   
         <span class="btn btn-success">
             <i class="fa fa-user"></i>{{$article->user->name}}
         </span> 

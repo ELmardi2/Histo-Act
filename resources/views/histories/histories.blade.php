@@ -36,8 +36,8 @@
         </span> 
         &nbsp;
         <span class="btn btn-success">
-            <i class="fa fa-user"></i>{{$history->user->name}}
-        </span> 
+                <i class="fa fa-user"></i>{{$history->user->name}}
+            </span>  
     </div>
     </div>  
 @endforeach <!--endforeach -->

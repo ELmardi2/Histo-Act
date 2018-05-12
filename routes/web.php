@@ -44,3 +44,7 @@ Route::post('/articles{id}/comments', 'CommentController@addComment');
 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

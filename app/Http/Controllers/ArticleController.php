@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Article;
@@ -81,7 +80,8 @@ class ArticleController extends Controller
 
         $userId = Auth::id();
         if ($article->user_id !== $userId) {
-            return redirect('/articles')->with('<div class="alert alert-danger">Sorry that it is not your article !! you can not edit it!!');
+            session()->flash('error', 'Sorry that it is not your article !! you can not edit it');
+            return redirect('/articles');
         }
         return view('articles.edit', compact('article'));
     }
@@ -97,9 +97,11 @@ class ArticleController extends Controller
     {
         $article->title = $request->title;
         $article->details = $request->details;
+
         $userId = Auth::id();
         if ($article->user_id !== $userId) {
-            return redirect('/articles')->with('message', 'Sorry that it is not your article !! you can not edit it');
+            session()->flash('error', 'Sorry that it is not your article !! you can not edit it');
+            return redirect('/articles');
         }
         $article->save();
         session()->flash('message', 'your article has been successfully updated');
@@ -114,6 +116,15 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
+
+        $userId = Auth::id();
+
+        if ($article->user_id !== $userId) {
+            session()->flash('error', 'Sorry that it is not your article !! you can not delete it !!');
+            return redirect('/articles');
+            
+        }
+
         $article->delete();
         session()->flash('message', 'your article has been deleted');
         return redirect(route('articles.index'));

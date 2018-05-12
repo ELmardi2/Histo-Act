@@ -55,6 +55,7 @@ class HistoryController extends Controller
            'title' =>$request->title,
            'details' =>$request->details,
            'user_id' => auth()->id()
+           
        ]);
        session()->flash('message', 'your Histories has been successfully added');
        return redirect(route('histories.index'));
@@ -100,7 +101,7 @@ class HistoryController extends Controller
         $history->details = $request->details;
         $userId = Auth::id();
         if ($history->user_id !== $userId) {
-            session()->flash('error', 'Sorry that it is not your article !! you can not edit it');
+            session()->flash('error', 'Sorry that it is not your history !! you can not edit it');
             return redirect('/histories');
         }
         $history->save();
@@ -119,7 +120,7 @@ class HistoryController extends Controller
         $history->delete();
         $userId = Auth::id();
         if ($history->user_id !== $userId) {
-            session()->flash('error', 'Sorry that it is not your article !! you can not edit it');
+            session()->flash('message', 'Sorry that it is not your history !! you can not delete it');
             return redirect('/histories');
         }
         session()->flash('message', 'your history has been deleted');

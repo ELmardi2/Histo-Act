@@ -7,9 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title> @yield('title', '|', 'Hist-Act')</title>
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <title> @yield('title', 'Hist-Act')</title>
     <link rel="stylesheet" type="text/css" media="screen" href="{{asset('css/app.css')}}" />
     <link rel="stylesheet" type="text/css" media="screen" href="{{asset('css/bootstrap.css')}}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

@@ -1,5 +1,6 @@
 @extends('defaults.default')
 
+
 @section('title', 'create-history')
 
 @section('content')
