@@ -3,6 +3,9 @@
 @section('title', 'articles-page') <!--page title-->
 @section('content') <!--start content section-->
 <h1 class="text-center mt-5"> Welcome to articles  page!!!</h1>
+@auth
+<a href="{{url('/home')}}" class=" btn btn-primary"> Back</a>
+@endauth
 @if (session()->has('message'))
     <div class="alert alert-success">
         {{session()->get('message')}}
@@ -10,7 +13,7 @@
 @endif
 @if (session()->has('error'))
     <div class="alert alert-danger">
-        {{session()->get('message')}}
+        {{session()->get('error')}}
     </div>
 @endif
 @if (count($articles) > 0)

@@ -9,7 +9,9 @@
 </form>
 @endif    
 
-
+@auth
+<a href="{{url('/home')}}" class=" btn btn-primary"> Back</a>
+@endauth
                                     @auth
     <div class="bg-info text-white p-4 mb-3">
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">

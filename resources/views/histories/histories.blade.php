@@ -5,6 +5,9 @@
 <!-- what is  goining to show in this page as content-->
 @section('content') <!--start content section-->
 <h2 class="text-center mt-5"> Welcome to all histories page!!!</h2>
+@auth
+<a href="{{url('/home')}}" class=" btn btn-primary"> Back</a>
+@endauth
 @if (session()->has('message'))
     <div class="alert alert-success">
         {{session()->get('message')}}
@@ -47,6 +50,6 @@
 
 @else
 <div class="alert alert-info text-center"> <strong>OH Sorry There is No History To Show For The Moment !!!!!!!</strong> </div>
-@endif <!-- End If -->
+@endif <!-- End If history count-->
 
 @endsection <!--end content section -->

@@ -21,14 +21,14 @@ Route::get('/about', 'PagesController@About');
 //Route contact-us page
 Route::get('/contact', 'PagesController@Contact');
 
+//Route contact-us 
+Route::post('/Send', 'PagesController@Send');
+
 //Route to Articles
 Route::resource('articles', 'ArticleController');
-//Route::post('articles/{user_id}/, 'ArticleController@store');
 
 //Route to Histories
 Route::resource('histories', 'HistoryController');
-//Route to Histories
-//Route::resource('posts', 'PostController');
 
 //Auth route
 Auth::routes();
