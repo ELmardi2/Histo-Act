@@ -3,7 +3,7 @@
 @section('title', 'create-history')
 
 @section('content') <!--Start content section-->
-<h1 class="my-5 text-center">Update The History</h1>
+<h1 class="my-5 text-center">Update The Story</h1>
 @if ($errors->all())
 <div class="alert-danger">
         @foreach ($errors->all() as $error)
@@ -30,7 +30,7 @@
     <textarea name="details"  id="details" class="form-control" cols="30" rows="10">{{$history->details}}</textarea>
 </div>
 <div class="form-group">
-    <button type="submit" class="btn btn-outline-primary"> Update The History</button>
+    <button type="submit" class="btn btn-outline-primary"> Update The Story</button>
 </div>
 </form>
 @stop <!--End content section-->

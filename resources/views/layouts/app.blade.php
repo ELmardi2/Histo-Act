@@ -8,8 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
+    <title>{{ config('app.name', 'Histo-Act') }}</title>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -49,16 +48,11 @@
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="{{url('histories/create')}}" class=" ">
-                                                <i class="fa fa-plus"></i>add history
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{url('articles/create')}}" class="">
-                                                <i class="fa fa-plus"></i>add article
-                                            </a>
-                                        </li>
+                                    <li>
+                                        <a href="#" class=" ">
+                                           <strong>Profil</strong> 
+                                        </a>
+                                    </li>
                                         <li>
                                             <a class="dropdown-item" href="{{ route('logout') }}"
                                            onclick="event.preventDefault();

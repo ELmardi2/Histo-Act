@@ -55,7 +55,6 @@ class HistoryController extends Controller
            'title' =>$request->title,
            'details' =>$request->details,
            'user_id' => auth()->id()
-           
        ]);
        session()->flash('message', 'your Histories has been successfully added');
        return redirect(route('histories.index'));

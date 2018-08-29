@@ -4,7 +4,7 @@
  
 <!-- what is  goining to show in this page as content-->
 @section('content') <!--start content section-->
-<h2 class="text-center mt-5"> Welcome to all histories page!!!</h2>
+<h2 class="text-center mt-5"> Welcome to all stories page!!!</h2>
 @if (session()->has('message'))
     <div class="alert alert-success">
         {{session()->get('message')}}

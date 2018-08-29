@@ -86,3 +86,133 @@
 
                     //app
 
+                    <?php
+
+                    namespace App;
+                    
+                    use Illuminate\Database\Eloquent\Model;
+                    
+                    class Comment extends Model
+                    {
+                    
+                        protected $fillable = [
+                            'content', 'user_id', 'article_id',
+                    
+                        ];
+                    
+                        public function article()
+                        {
+                            return $this->belongsTo('App\Article');
+                        }
+                        
+                        public function user()
+                        {
+                            return $this->belongsTo('App\User');
+                        }
+                    
+                    }
+                    <?php
+
+namespace App\Http\Controllers;
+
+use App\Comment;
+use App\Article;
+use App\History;
+use Illuminate\Http\Request;
+
+class CommentController extends Controller
+{
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function addComment(Request $request, Article $article)
+    {
+        $this->validate($request, [
+            'content' => 'required',
+        ]);
+        $comment = new Comment;
+        $comment->content = $request->content;
+        $user_id = $request->user_id;
+        $article_id = $request->article_id;
+        $article->comment()->save(comments);
+
+            
+        //$comments = App\Article::all()->comments;
+    }
+    public function store(Request $request, $slug)
+    {
+        $this->validate($request,[
+            'content' => 'required | min:10 | max:350'
+        ]);
+
+        $article = Article::where('slug', $slug)->firstOrFail();
+
+        $userId = Auth::id();
+
+        $comment = new Comment();
+        $comment->content = $request->content;
+        $comment->article()->associate($article);
+        $comment->user_id = $userId;
+
+        $comment->save();
+
+        session()->flash('message', 'your Comment has been successfully added');
+        
+        return redirect()->route('articles.show', $slug)->with('success',' Comment  successfully added');
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        
+        $comments = Article::findOrFail('slug');
+
+        Comment::create([
+            'content' => $request->content,
+            'user_id' => Auth::id(),
+            'article_id' => $request->article_id,
+        ]);
+        $article->comments()->save(comments);
+        
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Comment  $comment
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Comment $comment)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Comment  $comment
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Comment $comment)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Comment  $comment
+     * @return \Illuminate\Http\Response
+     */
+            

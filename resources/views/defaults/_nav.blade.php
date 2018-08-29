@@ -1,5 +1,5 @@
 <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel bg-info">
                 <div class="container">
                         <a class="navbar-brand" href="{{ url('/') }}">
                             {{ config('app.name', 'Histo-Act') }}
@@ -15,9 +15,11 @@
                                 &nbsp;
                                 <li><a href="{{url('/about')}}" class=" btn btn-secondary">About</a></li>
                                 &nbsp;
+                                <li><a href="{{url('/posts')}}" class=" btn btn-secondary">Posts</a></li>
+                                &nbsp;
                                 <li><a href="{{url('/articles')}}" class=" btn btn-secondary">Articles</a></li>
                                 &nbsp;
-                                <li><a href="{{url('/histories')}}" class=" btn btn-secondary">Histories</a></li>
+                                <li><a href="{{url('/histories')}}" class=" btn btn-secondary">Stories</a></li>
                                 &nbsp;
                                 <li><a href="{{url('/contact')}}" class=" btn btn-secondary">Contact-us</a></li>
                         </ul>
@@ -35,13 +37,8 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                         <li>
-                                            <a href="{{url('histories/create')}}" class=" ">
-                                                <i class="fa fa-plus"></i>add history
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{url('articles/create')}}" class="">
-                                                <i class="fa fa-plus"></i>add article
+                                            <a href="#" class=" ">
+                                               <strong>Profil</strong> 
                                             </a>
                                         </li>
                                         <li>

@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Article;
-
+use App\Comment;
+use App\User;
 class ArticleController extends Controller
 {
     public function __construct()
@@ -54,6 +55,7 @@ class ArticleController extends Controller
            'details' =>$request->details,
            'user_id' => auth()->id()
        ]);
+       
        session()->flash('message', 'your Article has been successfully added');
        return redirect(route('articles.index'));
     }
@@ -79,6 +81,7 @@ class ArticleController extends Controller
     {
 
         $userId = Auth::id();
+        
         if ($article->user_id !== $userId) {
             session()->flash('error', 'Sorry that it is not your article !! you can not edit it');
             return redirect('/articles');

@@ -25,18 +25,4 @@
     <button type="submit" class="btn btn-danger"><i class="fa fa-close"></i> Delete</button>
 </form> 
 @endif
-
-<div class="panel-body">
-    <h4 class="text-center pt-2">Leave your comment</h4>
-    <form action="#" >
-        @csrf
-        @method('POST')
-        <div class="form-group">
-                <textarea name="comment" id="comment" class="form-control" cols="5" rows="2"></textarea>
-            </div>
-            <div class="form-group">
-            <button type="submit" class="btn btn-outline-primary"> Add Your comment</button>
-            </div>
-    </form>
-</div>
 @stop <!--end content section -->

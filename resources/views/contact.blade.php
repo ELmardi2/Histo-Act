@@ -2,7 +2,7 @@
 @section('content') <!--start content section-->
 <h2 class="text-center mt-5"> Welcome to contact-us page!!!</h2>
 @if ($errors->all())
-<div class="alert-danger">
+<div class=" alert alert-danger">
         @foreach ($errors->all() as $error)
         <li>
             {{$error}}
